@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple tool to open Google Maps using place IDs.">
+    <title>Google Maps Place ID Opener</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 400px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #1a73e8;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #185abc;
+        }
+
+        .how-to {
+            margin-top: 20px;
+            max-width: 600px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Google Maps Place ID Opener</h1>
+    <input type="text" id="placeIdInput" placeholder="Enter Google Maps Place ID">
+    <button onclick="openPlace()">Open in Google Maps</button>
+
+    <div class="how-to">
+        <h2>How to Use</h2>
+        <p>Enter a Google Maps place ID into the input field above. Once entered, either click the "Open in Google Maps" button or press the ENTER key on your keyboard. This will open a new tab with the Google Maps location corresponding to the place ID.</p>
+    </div>
+
+    <script>
+        document.getElementById('placeIdInput').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                openPlace();
+            }
+        });
+
+        function openPlace() {
+            const placeId = document.getElementById('placeIdInput').value;
+            if (placeId) {
+                const url = `https://www.google.com/maps/place/?q=place_id:${placeId}`;
+                window.open(url, '_blank');
+            } else {
+                alert('Please enter a place ID.');
+            }
+        }
+    </script>
+</body>
+
+</html>
